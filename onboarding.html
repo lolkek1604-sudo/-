@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Анкета — Gateway to Dreams</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<div class="ob-wrap">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../index.html">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M5 3v18" stroke="#dc2828" stroke-width="2.4" stroke-linecap="round"/><path d="M5 4c3-1.6 6 1.6 9 0s5-1.4 5-1.4v9s-2 .8-5 1.4-6-1.4-9 0V4Z" fill="#16324f"/></svg>
+        <span data-i18n="brand">Gateway to Dreams</span>
+      </a>
+      <div class="lang">
+        <button class="lang-btn" id="langBtn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#5b6b7d" stroke-width="1.6"/><path d="M3 12h18M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18" stroke="#5b6b7d" stroke-width="1.4"/></svg>
+          <span id="langLabel">Русский</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="m6 9 6 6 6-6" stroke="#5b6b7d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lang-menu" id="langMenu">
+          <button data-lang="ru" class="active"><svg class="flag" viewBox="0 0 3 2"><rect width="3" height="2" fill="#fff"/><rect y=".667" width="3" height=".667" fill="#0039a6"/><rect y="1.333" width="3" height=".667" fill="#d52b1e"/></svg>Русский</button>
+          <button data-lang="uz"><svg class="flag" viewBox="0 0 3 2"><rect width="3" height="2" fill="#fff"/><rect width="3" height=".62" fill="#0099b5"/><rect y="1.38" width="3" height=".62" fill="#1eb53a"/><rect y=".6" width="3" height=".12" fill="#ce1126"/><rect y="1.28" width="3" height=".12" fill="#ce1126"/></svg>O‘zbekcha</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="ob-main">
+    <div class="ob-head">
+      <span class="ob-step" data-i18n="ob.step">Шаг 2 из 3 — Анкета</span>
+      <h1 data-i18n="ob.title">Расскажите о себе</h1>
+      <p data-i18n="ob.sub">Эта информация нужна для подготовки вашей визовой заявки. Пожалуйста, заполните все поля.</p>
+    </div>
+
+    <div class="ob-error" id="obError" data-i18n="ob.err.required">Пожалуйста, заполните обязательные поля и загрузите документы.</div>
+
+    <form id="obForm" novalidate>
+      <!-- ===== Section: visa history ===== -->
+      <div class="ob-section">
+        <h2 data-i18n="ob.sect.history">Визовая история</h2>
+
+        <div class="q" data-required-yn="q1">
+          <span class="q-label" data-i18n="ob.q1">Подавали ли вы ранее заявление на получение визы?</span>
+          <div class="yn" data-yn="q1">
+            <label><input type="radio" name="q1" value="yes"><span class="opt" data-i18n="ob.yes">Да</span></label>
+            <label><input type="radio" name="q1" value="no"><span class="opt" data-i18n="ob.no">Нет</span></label>
+          </div>
+          <div class="q-detail hide" data-show-when="q1=yes">
+            <label data-i18n="ob.q1.detail">Укажите страну и тип визы</label>
+            <input type="text" name="q1_detail" data-i18n-ph="ob.q1.detail.ph" placeholder="Например: Германия, туристическая (C)">
+          </div>
+        </div>
+
+        <!-- Q2 & Q3 appear only if Q1 = yes -->
+        <div class="hide" data-show-when="q1=yes" data-block="q1yes">
+          <div class="q" data-required-yn="q2">
+            <span class="q-label" data-i18n="ob.q2">Получали ли вы когда-либо отказ в выдаче визы США?</span>
+            <div class="yn" data-yn="q2">
+              <label><input type="radio" name="q2" value="yes"><span class="opt" data-i18n="ob.yes">Да</span></label>
+              <label><input type="radio" name="q2" value="no"><span class="opt" data-i18n="ob.no">Нет</span></label>
+            </div>
+            <div class="q-detail hide" data-show-when="q2=yes">
+              <label data-i18n="ob.q2.detail">Укажите дату отказа</label>
+              <input type="text" name="q2_detail" data-i18n-ph="ob.q2.detail.ph" placeholder="Например: 03.2023">
+            </div>
+          </div>
+
+          <div class="q" data-required-yn="q3">
+            <span class="q-label" data-i18n="ob.q3">Была ли у вас ранее виза США?</span>
+            <div class="yn" data-yn="q3">
+              <label><input type="radio" name="q3" value="yes"><span class="opt" data-i18n="ob.yes">Да</span></label>
+              <label><input type="radio" name="q3" value="no"><span class="opt" data-i18n="ob.no">Нет</span></label>
+            </div>
+            <div class="q-detail hide" data-show-when="q3=yes">
+              <label data-i18n="ob.q3.detail">Укажите тип визы (B1/B2, F-1, J-1, H-1B и т.д.) и цель поездки</label>
+              <input type="text" name="q3_detail" data-i18n-ph="ob.q3.detail.ph" placeholder="Например: B1/B2, туризм">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== Section: documents ===== -->
+      <div class="ob-section">
+        <h2 data-i18n="ob.sect.docs">Документы</h2>
+        <div class="q"><span class="q-label" data-i18n="ob.up.passport">Фотография внутреннего паспорта (Узбекистан)</span><div data-upload="passport"></div></div>
+        <div class="q"><span class="q-label" data-i18n="ob.up.intl">Фотография действующего заграничного паспорта</span><div data-upload="intl"></div></div>
+        <div class="q"><span class="q-label" data-i18n="ob.up.photo">Ваша фотография (портретное фото)</span><div data-upload="photo"></div></div>
+        <div class="q"><span class="q-label" data-i18n="ob.up.diploma">Фотографии дипломов и/или иных документов об образовании</span><div data-upload="diploma"></div></div>
+        <div class="q"><span class="q-label" data-i18n="ob.up.work">Фотография трудовой книжки или выписки о трудовой деятельности</span><div data-upload="work"></div></div>
+      </div>
+
+      <!-- ===== Section: personal ===== -->
+      <div class="ob-section">
+        <h2 data-i18n="ob.sect.personal">Личные данные</h2>
+
+        <div class="q" data-required-yn="crime">
+          <span class="q-label" data-i18n="ob.q.crime">Есть ли у вас судимость?</span>
+          <div class="yn" data-yn="crime">
+            <label><input type="radio" name="crime" value="yes"><span class="opt" data-i18n="ob.yes">Да</span></label>
+            <label><input type="radio" name="crime" value="no"><span class="opt" data-i18n="ob.no">Нет</span></label>
+          </div>
+          <div class="q-detail hide" data-show-when="crime=yes">
+            <label data-i18n="ob.q.crime.detail">Укажите подробности</label>
+            <textarea name="crime_detail" data-i18n-ph="ob.detail.ph" placeholder="Опишите подробнее"></textarea>
+          </div>
+        </div>
+
+        <div class="q" data-required-radio="marital">
+          <span class="q-label" data-i18n="ob.q.marital">Укажите ваше семейное положение</span>
+          <div class="radio-list" data-radio="marital">
+            <label><input type="radio" name="marital" value="single"><span class="opt" data-i18n="ob.marital.single">Холост / Не замужем</span></label>
+            <label><input type="radio" name="marital" value="married"><span class="opt" data-i18n="ob.marital.married">Женат / Замужем</span></label>
+            <label><input type="radio" name="marital" value="divorced"><span class="opt" data-i18n="ob.marital.divorced">Разведён(а)</span></label>
+            <label><input type="radio" name="marital" value="widowed"><span class="opt" data-i18n="ob.marital.widowed">Вдовец / Вдова</span></label>
+          </div>
+        </div>
+
+        <div class="q" data-required-yn="deport">
+          <span class="q-label" data-i18n="ob.q.deport">Были ли ранее депортации, нарушения визового режима или превышение срока пребывания за границей?</span>
+          <div class="yn" data-yn="deport">
+            <label><input type="radio" name="deport" value="yes"><span class="opt" data-i18n="ob.yes">Да</span></label>
+            <label><input type="radio" name="deport" value="no"><span class="opt" data-i18n="ob.no">Нет</span></label>
+          </div>
+          <div class="q-detail hide" data-show-when="deport=yes">
+            <label data-i18n="ob.q.deport.detail">Укажите подробности</label>
+            <textarea name="deport_detail" data-i18n-ph="ob.detail.ph" placeholder="Опишите подробнее"></textarea>
+          </div>
+        </div>
+
+        <div class="q" data-required-text="job">
+          <span class="q-label" data-i18n="ob.q.job">Желаемая должность или сфера работы?</span>
+          <div class="q-detail" style="margin-top:0">
+            <input type="text" name="job" data-i18n-ph="ob.q.job.ph" placeholder="Например: строительство, водитель, гостеприимство">
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-lg btn-block" data-i18n="ob.submit">Отправить анкету</button>
+    </form>
+  </main>
+</div>
+
+<script src="../assets/js/i18n.js"></script>
+<script src="../assets/js/app.js"></script>
+<script src="../assets/js/onboarding.js"></script>
+</body>
+</html>
